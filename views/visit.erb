@@ -1,0 +1,36 @@
+<h3>Передайте контакты писарю</h3>
+
+<form action="/visit" method="POST">
+
+  <div class="form-group">
+    <label for="myname">Барин</label>
+    <input type="text" name="name" class="form-control" id="myname" placeholder="Введите имя барина" value="<%= @username %>">
+  </div>
+
+  <div class="form-group">
+    <label for="myphone">Номер гонца</label>
+    <input type="text" name="phone" class="form-control" id="myphone" placeholder="Введите контактный номер" value="<%= @phone %>">
+  </div>
+
+  <div class="form-group">
+    <label for="datetimepicker">Дата и время приема</label>
+    <input type="text" name="date" class="form-control" id="datetimepicker" placeholder="Введите желаемую дату" value="<%= @date %>">
+  </div>
+
+  <div class="form-group">
+    <label for="myselect">Цирюльник</label>
+    <select class="form-control" name="barber" id="myselect">
+      <% @barbers.each do |barber| %>
+      <option><%= barber.name %></option>
+        <% end %>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary">Передать</button>
+</form>
+
+<script>
+    jQuery.datetimepicker.setLocale('ru');
+    jQuery('#datetimepicker').datetimepicker();
+</script>
