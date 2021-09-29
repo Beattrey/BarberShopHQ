@@ -25,12 +25,12 @@ end
 
 get '/visit' do
   @c = Client.new
-
   @barbers = Barber.all
   erb :visit
 end
 
 post '/visit' do
+  @barbers = Barber.all
   @c = Client.new params[:client]
   if @c.save
     erb "Вы успешно записались!"
@@ -61,4 +61,9 @@ end
 get '/booking' do
   @clients = Client.order('created_at DESC')
   erb :bookings
+end
+
+get '/client/:id' do
+  @client = Client.find(params[:id])
+  erb :client
 end
